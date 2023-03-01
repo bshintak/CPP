@@ -6,33 +6,35 @@
 #    By: bshintak <bshintak@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/02/09 00:43:32 by bshintak          #+#    #+#              #
-#    Updated: 2023/02/09 00:47:36 by bshintak         ###   ########.fr        #
+#    Updated: 2023/03/01 16:30:40 by bshintak         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-NAME	= phonebook
+# .SILENT :
 
-CPP		= c++
-FLAGS	= -Wall -Wextra -Werror -std=c++98
-RM		= rm -f
+NAME = phonebook
 
-SRCS	= phonebook.cpp
-OBJS	= $(SRCS: .cpp=.o)
+CPP = c++
+CPPFLAGS = -std=c++98 -Wall -Wextra -Werror
+SRCS = main.cpp phonebook.cpp contacts.cpp
+INC = contacts.hpp phonebook.hpp
 
-%.o: %.cpp
-	$(CPP) $(FLAGS) -c $< -o $@
+OBJS = $(SRCS:.cpp=.o)
 
-all: $(NAME)
+all : $(NAME)
 
-$(NAME): $(OBJS)
-	$(CPP) $(FLAGS) $(OBJS) -o $(NAME)
+$(NAME): $(OBJS) $(INC)
+	$(CPP) $(CPPFLAGS) $(OBJS) -o $(NAME)
+
+%.o : %.cpp  $(INC) 
+	$(CPP)  $(CPPFLAGS) -o $@ -c $< 
 
 clean:
-	$(RM) $(OBJS)
+	rm -f $(OBJS)
 
 fclean: clean
-	$(RM) $(NAME)
-
-re: fclean all
+	rm -f $(NAME)
+	
+re: fclean $(NAME)
 
 .PHONY: all clean fclean re
