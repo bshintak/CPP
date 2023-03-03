@@ -12,24 +12,36 @@ void    PhoneBook::welcome(void) {
     std::cout << std::endl;
 }
 
-void	PhoneBook::addContact(void) {
+Contact	*PhoneBook::addContact(void) {
 	static int	num;
+	Contact		*cont;
 	if (num == 8)
 		num = 0;
-	contacts[num].new_contact();
+	cont = contacts[num].new_contact();
 	num++;
 	std::cout << CONT_ADD << std::endl;
+	return (cont);
 }
 
-// void	print(int index)
-// {
-// 	std::cout << "         " << index << " | ";
-// 	std::cout << this->info_saved[index] << std::endl;
-// }
+void	Contact::print(int index)
+{
+	std::cout << "        " << index + 1 << " | ";
+	std::cout << this->_firstName;
+    std::cout << " | ";
+	std::cout << this->_lastName;
+    std::cout << " | ";
+	std::cout << this->_nickname;
+    std::cout << " | ";
+	std::cout << this->_phoneNumber;
+    std::cout << " | ";
+	std::cout << this->_darkSecret << std::endl;
+}
 
-// void	PhoneBook::searchContact(void) {
-// 	std::cout << INDEX_TABLE << std::endl;
-// 	for (int i = 0; i < 5 ; i++)
-// 		print(i + 1);
-// 	std::cout << std::endl;
-// }
+void	PhoneBook::searchContact(Contact *cont) {
+	// if (cont)
+		// std::cout << cont->getInfo() << std::endl;
+	std::cout << INDEX_TABLE << std::endl;
+	for (int i = 0; i < 8 ; i++)
+		cont->print(i);
+	std::cout << std::endl;
+}

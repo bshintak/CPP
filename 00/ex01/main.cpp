@@ -3,6 +3,7 @@
 int main()
 {
 	PhoneBook	list;
+	Contact		*cont;
 	std::string	command;
 
 	list.welcome();
@@ -10,16 +11,16 @@ int main()
 	{
 		std::cout << PROMPT;
 		std::cout << ">> ";
-		std::getline (std::cin,command);
+		std::getline (std::cin, command);
 		if (command == "EXIT" || command[0] == '\0')
 		{
 			std::cout << EXIT;
 			break;
 		}
 		else if (command == "ADD")
-			list.addContact();
-		// else if (command == "SEARCH")
-		// 	list.searchContact();
+			cont = list.addContact();
+		else if (command == "SEARCH")
+			list.searchContact(cont);
 		else
 			std::cout << ERROR;
 	}

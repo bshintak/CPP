@@ -6,7 +6,7 @@
 /*   By: bshintak <bshintak@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/09 00:57:02 by bshintak          #+#    #+#             */
-/*   Updated: 2023/03/01 17:52:13 by bshintak         ###   ########.fr       */
+/*   Updated: 2023/03/03 19:41:26 by bshintak         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,11 +31,21 @@
 
 class	Contact {
 	private:
-			std::string info_saved[5];
 			std::string information[5];
+			std::string _firstName;
+			std::string _lastName;
+			std::string _nickname;
+			std::string _phoneNumber;
+			std::string _darkSecret;
 	public:
 			Contact();
-			void	new_contact(void);
+			Contact	*new_contact(void);
+			void	print(int index);
+			// std::string	getInfo(void)
+			// {
+			// 	if (_firstName)
+			// 		return _firstName;
+			// }
 			// ~contact();
 };
 

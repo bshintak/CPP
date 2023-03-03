@@ -9,18 +9,29 @@ Contact::Contact()
 	this->information[4] = "Please enter your Darkest secret: ";
 }
 
-void	Contact::new_contact(void) {
+Contact	*Contact::new_contact(void) {
 	for (int i = 0; i < 5; i++)
 	{
 		while (1)
 		{
 			std::cout << this->information[i];
-			std::getline(std::cin, this->info_saved[i]);
-			// std::cout << info_saved[i] << std::endl;
-			if (this->info_saved[i] == "")
-				std::cout << EMPTY_FIELD;
-			else
-				break ;
+			if (i == 0)
+				std::getline(std::cin, this->_firstName);
+			else if (i == 1)
+				std::getline(std::cin, this->_lastName);
+			else if (i == 2)
+				std::getline(std::cin, this->_nickname);
+			else if (i == 3)
+				std::getline(std::cin, this->_phoneNumber);
+			else if (i == 4)
+				std::getline(std::cin, this->_darkSecret);
+			break ;
 		}
 	}
+	std::cout << this->_firstName << std::endl;
+	std::cout << this->_lastName << std::endl;
+	std::cout << this->_nickname << std::endl;
+	std::cout << this->_phoneNumber << std::endl;
+	std::cout << this->_darkSecret << std::endl;
+	return(this);
 }
