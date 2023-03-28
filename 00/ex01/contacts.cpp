@@ -19,7 +19,6 @@ void	Contact::new_contact(void) {
 	{
 		std::cout << this->information[i];
 		std::getline(std::cin, this->info_saved[i]);
-		// std::cout << info_saved[i] << std::endl;
 		while (this->info_saved[i] == "")
 		{
 			std::cout << EMPTY_FIELD;
@@ -39,7 +38,5 @@ void	Contact::showContact(int i) const
 	std::cout << std::endl;
 	std::cout << "Index Contact : " << i << std::endl;
 	for (int i = 0; i < 5; i++)
-	{
 		std::cout << names[i] << " : " << info_saved[i] << std::endl;
-	}
 }

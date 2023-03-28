@@ -53,32 +53,42 @@ std::string PhoneBook::table(int k) {
     return (str);
 }
 
-void	PhoneBook::searchContact(void) {
-    int i = 0;
-    std::string str = "";
+void    PhoneBook::printTable(std::string str) {
 
-	std::cout << std::endl;
+    std::cout << std::endl;
     for (int k = 0; k < 5; k++)
     {
-        std::cout << VIOLET << PIPE;
+        std::cout << GREEN << PIPE;
         str = table(k);
         std::cout << BOLDWHITE << std::setw(10) << str << NONE;
 
     }
 	std::cout << std::endl;
+}
+
+void    PhoneBook::printTruncate(int i) {
+
     while (i < MAX_CONTACTS)
     {
-        std::cout << VIOLET << PIPE;
+        std::cout << GREEN << PIPE;
 		std::cout << std::setw(10) << i;
-		std::cout << VIOLET << PIPE;
+		std::cout << GREEN << PIPE;
         for (int j = 0; j < 3; j++)
 		{
-			std::cout << std::setw(10) << this->contacts[i].getFieldInput(j);
-            std::cout << VIOLET << PIPE;
+			std::cout << std::setw(10) << truncate(this->contacts[i].getFieldInput(j));
+            std::cout << GREEN << PIPE;
         }
 	    std::cout << std::endl;
         ++i;
     }
+}
+
+void	PhoneBook::searchContact(void) {
+    int i = 0;
+    std::string str = "";
+
+	printTable(str);
+    printTruncate(i);
     std::cout << "\nWhich contact would you like to display ? [0 - 7]" << std::endl;
 	std::getline(std::cin, str);
     if (str == "")
@@ -90,8 +100,8 @@ void	PhoneBook::searchContact(void) {
 		{
 			std::cout << RED << "Invalid contact index : [0 - 7], pick an other one :" << NONE << std::endl;
 			std::getline(std::cin, str);
-			// if (str.length() == 1 && strIsDigit(str) == 0)
-			// 	i = std::atoi(str.c_str());
+			if (str.length() == 1 && strIsDigit(str) == 0)
+				i = std::atoi(str.c_str());
 		}
 		if (this->contacts[i].getFieldInput(0) != "")
 			this->contacts[i].showContact(i);
