@@ -6,7 +6,7 @@
 /*   By: bshintak <bshintak@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/09 00:57:02 by bshintak          #+#    #+#             */
-/*   Updated: 2023/03/28 13:13:20 by bshintak         ###   ########.fr       */
+/*   Updated: 2023/04/09 21:46:07 by bshintak         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,11 +42,10 @@ class	Contact {
 			std::string names[5];
 	public:
 			Contact();
+			~Contact();
 			void	new_contact(void);
 			std::string	getFieldInput(int i);
 			void	showContact(int i) const;
-
-			// ~contact();
 };
 
 #endif

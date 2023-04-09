@@ -1,5 +1,15 @@
 #include "phonebook.hpp"
 
+PhoneBook::PhoneBook(void) {
+	// std::cout << "Constructor called" << std::endl;
+	return ;
+}
+
+PhoneBook::~PhoneBook(void) {
+	// std::cout << "Destructor called" << std::endl;
+	return ;
+}
+
 void    PhoneBook::welcome(void) {
     std::cout << std::endl;
     std::cout << "😜 Welcome to Your Awesome PhoneBook 😜" << std::endl;
@@ -13,27 +23,23 @@ void    PhoneBook::welcome(void) {
 }
 
 void	PhoneBook::addContact(void) {
-	static int	num;
-	if (num == 8)
-		num = 0;
-	contacts[num].new_contact();
-	num++;
-    this->_num = num;
+	this->contacts[_num % MAX_CONTACTS].new_contact();
+	this->_num += 1;
 }
 
-std::string	PhoneBook::truncate(std::string string)
+std::string	PhoneBook::truncate(std::string str)
 {
-	if (string.length() > 10)
-		return (string.substr(0, 9) + ".");
+	if (str.length() > 10)
+		return (str.substr(0, 9) + ".");
 	else
-		return (string);
+		return (str);
 }
 
-int	PhoneBook::strIsDigit(std::string string) const
+int	PhoneBook::strIsDigit(std::string str) const
 {
-	for (unsigned long i = 0; i < string.length(); i++)
+	for (unsigned long i = 0; i < str.length(); i++)
 	{
-		if (!isdigit(string[i]))
+		if (!(str[i] >= '0' && str[i] <= '9'))
 			return (-1);
 	}
 	return (0);
@@ -83,6 +89,22 @@ void    PhoneBook::printTruncate(int i) {
     }
 }
 
+int PhoneBook::ft_fake_atoi(std::string str) {
+    int result = 0;
+    bool neg = false;
+    int i = 0;
+
+    while (str[i] == ' ' || (str[i] >= 9 && str[i] <= 13))
+        i++;
+    if (str[i] == '-' || str[i] == '+')
+        neg = str[i++] == '-';
+    if (str[i] < '0' || str[i] > '9')
+        return -1;
+    while (str[i] >= '0' && str[i] <= '9') 
+        result = result * 10 + (str[i++] - '0');
+    return neg ? -result : result;
+}
+
 void	PhoneBook::searchContact(void) {
     int i = 0;
     std::string str = "";
@@ -95,13 +117,14 @@ void	PhoneBook::searchContact(void) {
         std::cout << "\nPlease, "<< RED << "SEARCH" << NONE << " again" << std::endl;
     else
 	{
-		i = std::atoi(str.c_str()); // c_str() returns a pointer to the c-string representation of the string object's value.
+		i = ft_fake_atoi(str);
+        std::cout << "i = " << i << std::endl;
 		while (i < 0 || i >= this->_num || i >= MAX_CONTACTS)
 		{
 			std::cout << RED << "Invalid contact index : [0 - 7], pick an other one :" << NONE << std::endl;
 			std::getline(std::cin, str);
 			if (str.length() == 1 && strIsDigit(str) == 0)
-				i = std::atoi(str.c_str());
+				i = ft_fake_atoi(str);
 		}
 		if (this->contacts[i].getFieldInput(0) != "")
 			this->contacts[i].showContact(i);

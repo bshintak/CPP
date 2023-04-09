@@ -14,6 +14,11 @@ Contact::Contact()
 	this->names[4] = "Darkest Secret";
 }
 
+Contact::~Contact(void) {
+	// std::cout << "Destructor called" << std::endl;
+	return ;
+}
+
 void	Contact::new_contact(void) {
 	for (int i = 0; i < 5; i++)
 	{
