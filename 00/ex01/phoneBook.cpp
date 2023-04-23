@@ -118,7 +118,6 @@ void	PhoneBook::searchContact(void) {
     else
 	{
 		i = ft_fake_atoi(str);
-        std::cout << "i = " << i << std::endl;
 		while (i < 0 || i >= this->_num || i >= MAX_CONTACTS)
 		{
 			std::cout << RED << "Invalid contact index : [0 - 7], pick an other one :" << NONE << std::endl;
