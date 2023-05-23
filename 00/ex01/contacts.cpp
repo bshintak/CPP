@@ -1,7 +1,8 @@
-#include "phonebook.hpp"
+#include "phoneBook.hpp"
 
 Contact::Contact()
 {
+	// std::cout << "Constructor called" << std::endl;
 	this->information[0] = "Please enter your First name: ";
 	this->information[1] = "Please enter your Last name: ";
 	this->information[2] = "Please enter your Nickname: ";

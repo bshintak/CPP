@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   phoneBook.hpp                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: bshintak <bshintak@student.42.fr>          +#+  +:+       +#+        */
+/*   By: marvin <marvin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/09 00:51:43 by bshintak          #+#    #+#             */
-/*   Updated: 2023/04/09 21:46:18 by bshintak         ###   ########.fr       */
+/*   Updated: 2023/05/23 15:17:36 by marvin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,14 +27,14 @@ class PhoneBook {
 			PhoneBook();
 			~PhoneBook();
 			void	addContact(void);
-			void    welcome(void);
+			void	welcome(void);
 			void	searchContact(void);
-			void    printTruncate(int i);
-			void    printTable(std::string str);
+			void	printTruncate(int i);
+			void	printTable(std::string str);
 			int		strIsDigit(std::string str) const;
+			int		ft_fake_atoi(std::string str);
 			std::string	truncate(std::string str);
 			std::string	table(int k);
-			int		ft_fake_atoi(std::string str);
 };
 
 #endif

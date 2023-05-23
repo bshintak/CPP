@@ -1,6 +1,7 @@
-#include "phonebook.hpp"
+#include "phoneBook.hpp"
 
 PhoneBook::PhoneBook(void) {
+    this->_num = 0;
 	// std::cout << "Constructor called" << std::endl;
 	return ;
 }
@@ -30,9 +31,9 @@ void	PhoneBook::addContact(void) {
 std::string	PhoneBook::truncate(std::string str)
 {
 	if (str.length() > 10)
-		return (str.substr(0, 9) + ".");
+		return str.substr(0, 9) + ".";
 	else
-		return (str);
+		return str;
 }
 
 int	PhoneBook::strIsDigit(std::string str) const
@@ -40,9 +41,9 @@ int	PhoneBook::strIsDigit(std::string str) const
 	for (unsigned long i = 0; i < str.length(); i++)
 	{
 		if (!(str[i] >= '0' && str[i] <= '9'))
-			return (-1);
+			return -1;
 	}
-	return (0);
+	return 0;
 }
 
 std::string PhoneBook::table(int k) {
@@ -56,7 +57,7 @@ std::string PhoneBook::table(int k) {
         str = "Last Name";
     else if (k == 3)
         str = "Nickname";
-    return (str);
+    return str;
 }
 
 void    PhoneBook::printTable(std::string str) {
@@ -109,22 +110,28 @@ void	PhoneBook::searchContact(void) {
     int i = 0;
     std::string str = "";
 
-	printTable(str);
-    printTruncate(i);
-    std::cout << "\nWhich contact would you like to display ? [0 - 7]" << std::endl;
-	std::getline(std::cin, str);
+    if (!this->contacts[0].getFieldInput(0).empty())
+	{
+        printTable(str);
+        printTruncate(i);
+        std::cout << INDEX_TO_DISPLAY << std::endl;
+	    std::getline(std::cin, str);
+    }
     if (str == "")
-        std::cout << "\nPlease, "<< RED << "SEARCH" << NONE << " again" << std::endl;
+        std::cout << PHONEBOOK_EMPTY;
     else
 	{
 		i = ft_fake_atoi(str);
-		while (i < 0 || i >= this->_num || i >= MAX_CONTACTS)
-		{
-			std::cout << RED << "Invalid contact index : [0 - 7], pick an other one :" << NONE << std::endl;
-			std::getline(std::cin, str);
-			if (str.length() == 1 && strIsDigit(str) == 0)
-				i = ft_fake_atoi(str);
-		}
+        if (!this->contacts[0].getFieldInput(0).empty())
+        {
+		    while ((i < 0 || i >= this->_num || i >= MAX_CONTACTS))
+		    {
+		    	std::cout << RED << NO_INDEX << NONE << std::endl;
+		    	std::getline(std::cin, str);
+		    	if (str.length() == 1 && strIsDigit(str) == 0)
+		    		i = ft_fake_atoi(str);
+		    }
+        }
 		if (this->contacts[i].getFieldInput(0) != "")
 			this->contacts[i].showContact(i);
 	}
