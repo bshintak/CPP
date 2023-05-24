@@ -75,12 +75,3 @@ e retorna o endereço de memória de uma variável.
 Exemplo:
 std::string str = "Hello";
 std::cout << &str << std::endl;  // Imprime o endereço de memória de str
-
-Além disso, &string também pode ser usado para criar uma referência para a variável string.
-Nesse caso, a referência se torna um "apelido" para a variável original.
-Exemplo:
-std::string str = "Hello";
-std::string& stringRef = str;  // Cria uma referência para str
-std::cout << stringRef << std::endl;  // Imprime o valor da referência (no caso, "Hello")
-Nesse exemplo, stringRef é uma referência para a variável str.
-Qualquer alteração feita em stringRef também será refletida em str e vice-versa.
