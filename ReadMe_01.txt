@@ -56,3 +56,31 @@ Exemplo:
 Zombie* zombie = new Zombie;  // Alocação de um objeto Zombie
 delete zombie;  // Liberação da memória alocada para o objeto Zombie
 
+/----------------------------------------------------------------------------------------------------------------------------/
+
+1. string:
+string é uma variável que representa um objeto do tipo std::string, que é uma classe de string na biblioteca padrão do C++.
+Quando você declara uma variável string, está criando uma instância dessa classe que pode armazenar uma sequência de caracteres.
+
+2. *string:
+*string não é uma sintaxe válida por si só. No entanto, se você estiver usando um ponteiro para std::string,
+então *stringPtr seria usado para acessar o valor apontado pelo ponteiro.
+Exemplo:
+std::string* stringPtr = new std::string("Hello");
+std::cout << *stringPtr << std::endl;  // Imprime o valor apontado por stringPtr (no caso, "Hello")
+
+3. &string:
+&string é usado para obter o endereço de memória da variável string. O operador & é conhecido como operador de endereço
+e retorna o endereço de memória de uma variável.
+Exemplo:
+std::string str = "Hello";
+std::cout << &str << std::endl;  // Imprime o endereço de memória de str
+
+Além disso, &string também pode ser usado para criar uma referência para a variável string.
+Nesse caso, a referência se torna um "apelido" para a variável original.
+Exemplo:
+std::string str = "Hello";
+std::string& stringRef = str;  // Cria uma referência para str
+std::cout << stringRef << std::endl;  // Imprime o valor da referência (no caso, "Hello")
+Nesse exemplo, stringRef é uma referência para a variável str.
+Qualquer alteração feita em stringRef também será refletida em str e vice-versa.
