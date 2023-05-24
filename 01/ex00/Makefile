@@ -1,5 +1,4 @@
 # .SILENT :
-
 NAME = zombie
 
 CPP = c++

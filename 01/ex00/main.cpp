@@ -2,12 +2,10 @@
 
 int main() {
     // Cria um zumbi na heap e anuncia
-    Zombie* zombie1 = newZombie("Zombie1");
-    std::cout << std::endl;
+    Zombie *zombie = newZombie("Foo");
 
-    // Cria um zumbi na stack e anuncia
-    Zombie zombie2("Zombie2");
-    zombie2.announce();
+    // Anuncia o zumbi criado
+    zombie->announce();
     std::cout << std::endl;
 
     // Cria um zumbi aleatório na stack e anuncia
@@ -15,6 +13,6 @@ int main() {
     std::cout << std::endl;
 
     // Libera a memória alocada na heap pelo zombie1
-    delete zombie1;
+    delete zombie;
     return 0;
 }
