@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: bshintak <bshintak@student.42.fr>          +#+  +:+       +#+         #
+#    By: marvin <marvin@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/02/08 23:52:47 by bshintak          #+#    #+#              #
-#    Updated: 2023/02/09 00:20:18 by bshintak         ###   ########.fr        #
+#    Updated: 2023/05/24 12:38:00 by marvin           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -16,7 +16,7 @@ CPP		= c++
 FLAGS	= -Wall -Wextra -Werror -std=c++98
 RM		= rm -f
 
-SRCS	= megaphone.cpp
+SRCS	= Megaphone.cpp
 OBJS	= $(SRCS:.cpp=.o)
 
 %.o: %.cpp

@@ -6,7 +6,7 @@
 /*   By: marvin <marvin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/09 00:57:02 by bshintak          #+#    #+#             */
-/*   Updated: 2023/05/23 15:18:55 by marvin           ###   ########.fr       */
+/*   Updated: 2023/05/24 12:39:08 by marvin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,15 +36,15 @@
 
 class	Contact {
 	private:
-			std::string info_saved[5];
-			std::string information[5];
-			std::string names[5];
+			std::string InfoSaved[5];
+			std::string Information[5];
+			std::string Names[5];
 	public:
 			Contact();
 			~Contact();
-			void	new_contact(void);
-			void	showContact(int i) const;
-			std::string	getFieldInput(int i);
+			void	NewContact(void);
+			void	ShowContact(int i) const;
+			std::string	GetFieldInput(int i);
 };
 
 #endif

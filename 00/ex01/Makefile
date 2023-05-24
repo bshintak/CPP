@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: bshintak <bshintak@student.42.fr>          +#+  +:+       +#+         #
+#    By: marvin <marvin@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/02/09 00:43:32 by bshintak          #+#    #+#              #
-#    Updated: 2023/03/28 13:14:40 by bshintak         ###   ########.fr        #
+#    Updated: 2023/05/24 12:44:03 by marvin           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -16,8 +16,8 @@ NAME = phonebook
 
 CPP = c++
 CPPFLAGS = -std=c++98 -Wall -Wextra -Werror
-SRCS = main.cpp phoneBook.cpp contacts.cpp
-INC = contacts.hpp phoneBook.hpp
+SRCS = Main.cpp PhoneBook.cpp Contacts.cpp
+INC = Contacts.hpp PhoneBook.hpp
 
 OBJS = $(SRCS:.cpp=.o)
 

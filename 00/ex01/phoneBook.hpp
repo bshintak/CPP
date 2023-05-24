@@ -6,7 +6,7 @@
 /*   By: marvin <marvin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/09 00:51:43 by bshintak          #+#    #+#             */
-/*   Updated: 2023/05/23 15:17:36 by marvin           ###   ########.fr       */
+/*   Updated: 2023/05/24 12:42:50 by marvin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 
 #include <iostream>
 #include <iomanip>
-#include "contacts.hpp"
+#include "Contacts.hpp"
 
 # define MAX_CONTACTS 8
 
@@ -26,15 +26,15 @@ class PhoneBook {
 	public:
 			PhoneBook();
 			~PhoneBook();
-			void	addContact(void);
-			void	welcome(void);
-			void	searchContact(void);
-			void	printTruncate(int i);
-			void	printTable(std::string str);
-			int		strIsDigit(std::string str) const;
-			int		ft_fake_atoi(std::string str);
-			std::string	truncate(std::string str);
-			std::string	table(int k);
+			void	AddContact(void);
+			void	Welcome(void);
+			void	SearchContact(void);
+			void	PrintTruncate(int i);
+			void	PrintTable(std::string str);
+			int		StrIsDigit(std::string str) const;
+			int		FakeAtoi(std::string str);
+			std::string	Truncate(std::string str);
+			std::string	Table(int k);
 };
 
 #endif

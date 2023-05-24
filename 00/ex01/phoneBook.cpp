@@ -1,4 +1,4 @@
-#include "phoneBook.hpp"
+#include "PhoneBook.hpp"
 
 PhoneBook::PhoneBook(void) {
     this->_num = 0;
@@ -11,7 +11,7 @@ PhoneBook::~PhoneBook(void) {
 	return ;
 }
 
-void    PhoneBook::welcome(void) {
+void    PhoneBook::Welcome(void) {
     std::cout << std::endl;
     std::cout << "😜 Welcome to Your Awesome PhoneBook 😜" << std::endl;
     std::cout << std::endl;
@@ -23,12 +23,12 @@ void    PhoneBook::welcome(void) {
     std::cout << std::endl;
 }
 
-void	PhoneBook::addContact(void) {
-	this->contacts[_num % MAX_CONTACTS].new_contact();
+void	PhoneBook::AddContact(void) {
+	this->contacts[_num % MAX_CONTACTS].NewContact();
 	this->_num += 1;
 }
 
-std::string	PhoneBook::truncate(std::string str)
+std::string	PhoneBook::Truncate(std::string str)
 {
 	if (str.length() > 10)
 		return str.substr(0, 9) + ".";
@@ -36,7 +36,7 @@ std::string	PhoneBook::truncate(std::string str)
 		return str;
 }
 
-int	PhoneBook::strIsDigit(std::string str) const
+int	PhoneBook::StrIsDigit(std::string str) const
 {
 	for (unsigned long i = 0; i < str.length(); i++)
 	{
@@ -46,7 +46,7 @@ int	PhoneBook::strIsDigit(std::string str) const
 	return 0;
 }
 
-std::string PhoneBook::table(int k) {
+std::string PhoneBook::Table(int k) {
 
     std::string str = "";
     if (k == 0)
@@ -60,20 +60,20 @@ std::string PhoneBook::table(int k) {
     return str;
 }
 
-void    PhoneBook::printTable(std::string str) {
+void    PhoneBook::PrintTable(std::string str) {
 
     std::cout << std::endl;
     for (int k = 0; k < 5; k++)
     {
         std::cout << GREEN << PIPE;
-        str = table(k);
+        str = Table(k);
         std::cout << BOLDWHITE << std::setw(10) << str << NONE;
 
     }
 	std::cout << std::endl;
 }
 
-void    PhoneBook::printTruncate(int i) {
+void    PhoneBook::PrintTruncate(int i) {
 
     while (i < MAX_CONTACTS)
     {
@@ -82,7 +82,7 @@ void    PhoneBook::printTruncate(int i) {
 		std::cout << GREEN << PIPE;
         for (int j = 0; j < 3; j++)
 		{
-			std::cout << std::setw(10) << truncate(this->contacts[i].getFieldInput(j));
+			std::cout << std::setw(10) << Truncate(this->contacts[i].GetFieldInput(j));
             std::cout << GREEN << PIPE;
         }
 	    std::cout << std::endl;
@@ -90,7 +90,7 @@ void    PhoneBook::printTruncate(int i) {
     }
 }
 
-int PhoneBook::ft_fake_atoi(std::string str) {
+int PhoneBook::FakeAtoi(std::string str) {
     int result = 0;
     bool neg = false;
     int i = 0;
@@ -106,14 +106,14 @@ int PhoneBook::ft_fake_atoi(std::string str) {
     return neg ? -result : result;
 }
 
-void	PhoneBook::searchContact(void) {
+void	PhoneBook::SearchContact(void) {
     int i = 0;
     std::string str = "";
 
-    if (!this->contacts[0].getFieldInput(0).empty())
+    if (!this->contacts[0].GetFieldInput(0).empty())
 	{
-        printTable(str);
-        printTruncate(i);
+        PrintTable(str);
+        PrintTruncate(i);
         std::cout << INDEX_TO_DISPLAY << std::endl;
 	    std::getline(std::cin, str);
     }
@@ -121,18 +121,18 @@ void	PhoneBook::searchContact(void) {
         std::cout << PHONEBOOK_EMPTY;
     else
 	{
-		i = ft_fake_atoi(str);
-        if (!this->contacts[0].getFieldInput(0).empty())
+		i = FakeAtoi(str);
+        if (!this->contacts[0].GetFieldInput(0).empty())
         {
 		    while ((i < 0 || i >= this->_num || i >= MAX_CONTACTS))
 		    {
 		    	std::cout << RED << NO_INDEX << NONE << std::endl;
 		    	std::getline(std::cin, str);
-		    	if (str.length() == 1 && strIsDigit(str) == 0)
-		    		i = ft_fake_atoi(str);
+		    	if (str.length() == 1 && StrIsDigit(str) == 0)
+		    		i = FakeAtoi(str);
 		    }
         }
-		if (this->contacts[i].getFieldInput(0) != "")
-			this->contacts[i].showContact(i);
+		if (this->contacts[i].GetFieldInput(0) != "")
+			this->contacts[i].ShowContact(i);
 	}
 }

@@ -1,11 +1,11 @@
-#include "phoneBook.hpp"
+#include "PhoneBook.hpp"
 
 int main(void)
 {
 	PhoneBook	list;
 	std::string	command;
 
-	list.welcome();
+	list.Welcome();
 	while (1)
 	{
 		std::cout << PROMPT;
@@ -17,9 +17,9 @@ int main(void)
 			break;
 		}
 		else if (command == "ADD")
-			list.addContact();
+			list.AddContact();
 		else if (command == "SEARCH")
-			list.searchContact();
+			list.SearchContact();
 		else
 			std::cout << ERROR;
 	}
