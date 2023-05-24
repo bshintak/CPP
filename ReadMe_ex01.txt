@@ -34,3 +34,25 @@ delete ptr;  // Liberação da memória alocada
 
 new -> aloca dinamicamente memória para um objeto e retornar um ponteiro para essa memória alocada
 nesse caso aloca um objeto do tipo Zombie
+
+/----------------------------------------------------------------------------------------------------------------------------/
+
+A diferença entre delete [] zombie e delete zombie:
+
+delete [] zombie:
+- Essa forma é usada quando o objeto alocado dinamicamente é um array, ou seja, quando você usa new[] para alocar a memória.
+- Essa sintaxe é usada para liberar a memória alocada para um array de objetos.
+- É importante usar delete [] para desalocar corretamente a memória alocada para arrays, pois o compilador precisa
+saber que está lidando com um array e desalocar a memória de forma adequada.
+Exemplo:
+Zombie* zombies = new Zombie[10];  // Alocação de um array de 10 objetos Zombie
+delete [] zombies;  // Liberação da memória alocada para o array de objetos Zombie
+
+delete zombie:
+- Essa forma é usada quando o objeto alocado dinamicamente não é um array, ou seja, quando você usa new para alocar a memória.
+- Essa sintaxe é usada para liberar a memória alocada para um único objeto.
+- É importante usar delete para desalocar corretamente a memória alocada para objetos individuais.
+Exemplo:
+Zombie* zombie = new Zombie;  // Alocação de um objeto Zombie
+delete zombie;  // Liberação da memória alocada para o objeto Zombie
+
