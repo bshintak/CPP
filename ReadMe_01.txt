@@ -75,3 +75,11 @@ e retorna o endereço de memória de uma variável.
 Exemplo:
 std::string str = "Hello";
 std::cout << &str << std::endl;  // Imprime o endereço de memória de str
+
+/----------------------------------------------------------------------------------------------------------------------------/
+
+HumanA::HumanA(std::string name, Weapon& weapon) : _name(name), _weapon(&weapon) {}
+- No meu construtor do humanA eu recebo como parametro name e weapon porque eu preciso inicializar as duas variáveis
+
+HumanB::HumanB(std::string name) : _name(name), _weapon(NULL){}
+- No caso do humanB eu só recebo o name porque não o humanB não precisa ser sempre inicializado com uma weapon
