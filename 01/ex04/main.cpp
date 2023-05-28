@@ -3,14 +3,8 @@
 int main(int argc, char **argv)
 {
 	(void)argv;
-	if (argc == 4)
-	{
-		Replace rep(argv[1]);
-		rep.replace(argv[2], argv[3]);
-	}
-	else
-	{
-		std::cerr << ERROR_MSG << std::endl;
-		return 1;
-	}
+	if (argc != 4)
+		return (std::cerr << ERROR_MSG << std::endl, 1);
+	return (replaceLine(argv[1], argv[2], argv[3]));
+	return 0;
 }

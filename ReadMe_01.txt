@@ -83,3 +83,57 @@ HumanA::HumanA(std::string name, Weapon& weapon) : _name(name), _weapon(&weapon)
 
 HumanB::HumanB(std::string name) : _name(name), _weapon(NULL){}
 - No caso do humanB eu só recebo o name porque não o humanB não precisa ser sempre inicializado com uma weapon
+
+/----------------------------------------------------------------------------------------------------------------------------/
+
+<iostream> é uma biblioteca padrão do C++ que fornece recursos para entrada e saída de dados. Ela contém definições
+para objetos como cin, cout e cerr, que são usados para ler dados do usuário e exibir informações na tela.
+
+Aqui estão algumas das principais classes e objetos fornecidos pela biblioteca <iostream>:
+- std::cin: É um objeto que permite a entrada de dados a partir do console. Você pode usar o operador de extração (>>)
+para ler diferentes tipos de dados, como inteiros, floats, strings, etc.
+- std::cout: É um objeto que permite a saída de dados para o console. Você pode usar o operador de inserção (<<) para
+exibir diferentes tipos de dados, como inteiros, floats, strings, etc.
+- std::cerr: É um objeto semelhante a std::cout, mas é usado para exibir mensagens de erro ou informações de diagnóstico.
+A saída do std::cerr é geralmente direcionada para o console de erro.
+
+
+<fstream> é outra biblioteca padrão do C++ que fornece recursos para manipulação de arquivos. Ela permite a
+leitura e escrita de dados em arquivos no disco. A biblioteca <fstream> contém classes que permitem a abertura, leitura,
+escrita e fechamento de arquivos. Ela é especialmente útil quando você precisa ler dados de um arquivo existente ou
+gravar dados em um novo arquivo.
+
+Aqui estão algumas das classes e objetos principais fornecidos pela biblioteca <fstream>:
+- std::ifstream: É uma classe que representa um fluxo de entrada de arquivo. É usada para ler dados de um arquivo existente.
+Você pode usar objetos da classe std::ifstream juntamente com o operador de extração (>>) para ler dados de diferentes tipos do arquivo.
+- std::ofstream: É uma classe que representa um fluxo de saída de arquivo. É usada para gravar dados em um arquivo.
+Você pode usar objetos da classe std::ofstream juntamente com o operador de inserção (<<) para escrever dados de diferentes tipos no arquivo.
+- std::fstream: É uma classe que representa um fluxo de arquivo bidirecional, permitindo tanto a leitura quanto a escrita de dados
+em um arquivo. Pode ser usado para operações de leitura e escrita em um único arquivo.
+
+A biblioteca <cstring> é uma biblioteca padrão do C++ que fornece várias funções para manipulação de strings e operações
+relacionadas a cadeias de caracteres. A principal função da biblioteca <cstring> é trabalhar com strings como arrays de
+caracteres. Ela inclui funções para copiar, concatenar, comparar e manipular strings de forma eficiente.
+
+Aqui estão algumas das funções mais comuns fornecidas pela biblioteca <cstring>:
+- strcpy(): Copia uma string de origem para uma string de destino.
+- strcat(): Concatena duas strings, adicionando a segunda no final da primeira.
+- strlen(): Retorna o comprimento de uma string.
+- strcmp(): Compara duas strings e retorna um valor inteiro que indica a relação entre elas.
+- strchr(): Localiza a primeira ocorrência de um caractere em uma string.
+- strstr(): Localiza a primeira ocorrência de uma substring em uma string.
+- memset(): Preenche um bloco de memória com um determinado valor.
+
+<cstdlib> é uma biblioteca padrão do C++ que fornece várias funções relacionadas a operações de conversão de tipos,
+geração de números aleatórios, alocação de memória dinâmica e controle de fluxo do programa.
+
+Aqui estão algumas das principais funções fornecidas pela biblioteca <cstdlib>:
+- atoi(), atol(), atoll(): Convertem uma string em um valor inteiro (atoi), longo (atol) ou longo longo (atoll).
+- strtod(), strtof(), strtold(): Convertem uma string em um valor de ponto flutuante (strtod), ponto flutuante de precisão
+simples (strtof) ou ponto flutuante de precisão estendida (strtold).
+- rand(): Gera um número inteiro aleatório.
+- srand(): Inicializa o gerador de números aleatórios com uma semente.
+- malloc(), calloc(), realloc(), free(): Funções para gerenciamento de memória dinâmica. malloc aloca memória, calloc
+aloca e inicializa a memória com zeros, realloc redimensiona a memória alocada e free libera a memória alocada.
+- exit(): Termina o programa imediatamente.
+- system(): Executa um comando do sistema operacional.

@@ -3,7 +3,7 @@ NAME = sedIsForLosers
 
 CPP = c++
 CPPFLAGS = -std=c++98 -Wall -Wextra -Werror
-SRCS = main.cpp
+SRCS = main.cpp Replace.cpp
 INC = Replace.hpp
 
 OBJS = $(SRCS:.cpp=.o)
