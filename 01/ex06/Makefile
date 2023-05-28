@@ -1,5 +1,5 @@
 # .SILENT :
-NAME = harl
+NAME = harlFilter
 
 CPP = c++
 CPPFLAGS = -std=c++98 -Wall -Wextra -Werror
