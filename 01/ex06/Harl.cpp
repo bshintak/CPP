@@ -27,13 +27,5 @@ void Harl::complain(std::string level) {
         if (level == option_type[i])
 			num = i;
     }
-	if (num == 0)
-		return (this->*options[0])();
-	else if (num == 1)
-		return (this->*options[1])();
-	else if (num == 2)
-		return (this->*options[2])();
-	else if (num == 3)
-		return (this->*options[3])();
-    std::cerr << INVALID << std::endl;
+		return (this->*options[num])();
 }
