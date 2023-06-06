@@ -13,7 +13,7 @@ Fixed::~Fixed() {
 // Chamado quando um novo objeto Fixed é criado a partir de outro objeto Fixed e realiza a cópia do objeto number para o objeto atual
 Fixed::Fixed(Fixed const &number) {
 	std::cout << "Copy constructor called" << std::endl;
-	*this = number; // chama o operador de atribuição (operator=)
+	*this = number;
 }
 
 // Retorna o valor _fixedPoint
@@ -34,4 +34,30 @@ Fixed &Fixed::operator=(Fixed const &number) {
 	if (this != &number)
 		this->_fixedPoint = number.getRawBits();
 	return *this;
+}
+
+/* ---------- NEW ---------- */
+
+Fixed::Fixed(const int value): _fixedPoint(value * (1 << _fractionalBits)) {
+	std::cout << "Int constructor called" << std::endl;
+}
+
+Fixed::Fixed(const float value): _fixedPoint(roundf(value * (1 << _fractionalBits))) {
+	std::cout << "Float constructor called" << std::endl;
+}
+
+// converter para um float
+float Fixed::toFloat(void) const {
+	return (float)_fixedPoint / (1 << _fractionalBits);
+}
+
+// converter para um int
+int Fixed::toInt(void) const {
+	return(_fixedPoint >> _fractionalBits);
+}
+
+// std::ostream representa o fluxo de saida
+// const Fixed -> objeto que sera impresso
+std::ostream& operator<<(std::ostream& out, const Fixed& obj) {
+	return(out << obj.toFloat());
 }
