@@ -33,5 +33,7 @@ Fixed &Fixed::operator=(Fixed const &number) {
 	std::cout << "Copy assignment operator called" << std::endl;
 	if (this != &number)
 		this->_fixedPoint = number.getRawBits();
-	return *this;
+	return *this; // Em C++, this é um ponteiro implícito que aponta para o objeto atual dentro de um método de classe
+	// ao retornar *this estamos desrefenciando o ponteiro para obter o objeto real ao qual ele aponta
+	// * é usado para acessar o objeto referenciado por um ponteiro, entao acabamos por retornar uma referencia
 }
