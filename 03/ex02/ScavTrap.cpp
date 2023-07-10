@@ -87,4 +87,3 @@ void    ScavTrap::beRepaired(unsigned int amount)
         this->_energyPoints--;
     }
 }
-

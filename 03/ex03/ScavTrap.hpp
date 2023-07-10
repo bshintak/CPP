@@ -8,7 +8,7 @@
 # define HITPOINT " is dead..."
 # define ENERGYPOINT " doesn't have enough energy.."
 
-class ScavTrap : public ClapTrap {
+class ScavTrap : virtual public ClapTrap {
   public:
     ScavTrap();
     ~ScavTrap();

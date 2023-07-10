@@ -38,10 +38,11 @@ Fixed &Fixed::operator=(Fixed const &number) {
 
 /* ---------- NEW ---------- */
 
+// exemplo: _fixedPoint = 4 / value = 2 (1 << 4 = 2 potencia de 4 = 16), depois multiplica pelo value = 32 
 Fixed::Fixed(const int value): _fixedPoint(value * (1 << _fractionalBits)) {
 	std::cout << "Int constructor called" << std::endl;
 }
-
+// roundf arredonda para o inteiro mais proximo para poder armazenar no _fixedPoint (int)
 Fixed::Fixed(const float value): _fixedPoint(roundf(value * (1 << _fractionalBits))) {
 	std::cout << "Float constructor called" << std::endl;
 }
@@ -58,6 +59,7 @@ int Fixed::toInt(void) const {
 
 // std::ostream representa o fluxo de saida
 // const Fixed -> objeto que sera impresso
+// ao usar o operador << com um objeto da classe Fixed, ele chamará essa função
 std::ostream& operator<<(std::ostream& out, const Fixed& obj) {
-	return(out << obj.toFloat());
+	return(out << obj.toFloat()); //insere o valor em ponto flutuante no fluxo de saida
 }

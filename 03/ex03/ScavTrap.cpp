@@ -1,10 +1,7 @@
 #include "ScavTrap.hpp"
 
 ScavTrap::ScavTrap(): ClapTrap() {
-    this->_name = "Undefined";
-    this->_hitPoints = 100;
     this->_energyPoints = 50;
-    this->_attackDamage = 20;
     std::cout << "ScavTrap: Default constructor called with name: " << this->_name << std::endl;
     return;
 }
@@ -15,7 +12,6 @@ ScavTrap::~ScavTrap() {
 }
 
 ScavTrap::ScavTrap(std::string name): ClapTrap(name) {
-    this->_name = name;
     this->_hitPoints = 100;
     this->_energyPoints = 50;
     this->_attackDamage = 20;
@@ -32,7 +28,6 @@ ScavTrap &ScavTrap::operator=(const ScavTrap &copy)
 {
     if (this == &copy)
         return *this;
-    this->_name = copy.getName();
     this->_hitPoints = copy.getHitPoints();
     this->_energyPoints = copy.getEnergyPoints();
     this->_attackDamage = copy.getAttackDamage();
@@ -87,4 +82,3 @@ void    ScavTrap::beRepaired(unsigned int amount)
         this->_energyPoints--;
     }
 }
-

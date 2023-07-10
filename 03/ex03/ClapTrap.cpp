@@ -2,19 +2,19 @@
 
 // Constructor
 ClapTrap::ClapTrap(): _name("Undefined"), _hitPoints(10), _energyPoints(10), _attackDamage(0) {
-  std::cout << "Default constructor called with name: " << this->_name << std::endl;
+  std::cout << "ClapTrap: Default constructor called with name: " << this->_name << std::endl;
   return ;
 }
 
 // Destructor
 ClapTrap::~ClapTrap() {
-  std::cout << "Destructor called with name: " << this->_name << std::endl;
+  std::cout << "ClapTrap: Destructor called with name: " << this->_name << std::endl;
   return ;
 }
 
 // Constructor with name
 ClapTrap::ClapTrap(std::string name): _name(name), _hitPoints(10), _energyPoints(10), _attackDamage(0) {
-  std::cout << "Constructor called with name: "<< this->_name << std::endl;
+  std::cout << "ClapTrap: Constructor called with name: "<< this->_name << std::endl;
   return ;
 }
 
@@ -22,7 +22,7 @@ ClapTrap::ClapTrap(std::string name): _name(name), _hitPoints(10), _energyPoints
 ClapTrap::ClapTrap(const ClapTrap &copy)
 {
     *this = copy;
-    std::cout << "Copy constructor called with name: " << this->_name << std::endl;
+    std::cout << "ClapTrap: Copy constructor called with name: " << this->_name << std::endl;
     return ;
 }
 
@@ -31,11 +31,10 @@ ClapTrap &ClapTrap::operator=(const ClapTrap &copy)
 {
     if (this == &copy)
         return *this;
-    this->_name = copy.getName();
     this->_hitPoints = copy.getHitPoints();
     this->_energyPoints = copy.getEnergyPoints();
     this->_attackDamage = copy.getAttackDamage();
-    std::cout << "Copy assignment operator called with name: " << this->_name << std::endl;
+    std::cout << "ClapTrap: Copy assignment operator called with name: " << this->_name << std::endl;
     return *this;
 }
 

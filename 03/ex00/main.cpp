@@ -7,6 +7,7 @@ int main() {
   ClapTrap  withName3(withName2);
 
   withName2 = withName;
+  std::cout << "---------------------------" << std::endl;
   noName.attack("Roger");
   noName.takeDamage(100);
   noName.beRepaired(30);
@@ -15,7 +16,7 @@ int main() {
   withName.takeDamage(4);
   withName.beRepaired(2);
   std::cout << "---------------------------" << std::endl;
-  withName2.attack("Barbara");
-  withName2.takeDamage(4);
-  withName2.beRepaired(2);
+  withName3.attack("Barbara");
+  withName3.takeDamage(4);
+  withName3.beRepaired(2);
 }
