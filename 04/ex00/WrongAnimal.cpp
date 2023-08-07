@@ -8,10 +8,6 @@ WrongAnimal::~WrongAnimal() {
   std::cout << "WrongAnimal: Destructor called" << std::endl;
 }
 
-WrongAnimal::WrongAnimal(std::string name) : _type(name) {
-  std::cout << "WrongAnimal: Constructor called with name: " << this->_type << std::endl;
-}
-
 WrongAnimal::WrongAnimal(WrongAnimal const& copy) {
 	std::cout << "WrongAnimal: Copy constructor called!" << std::endl;
 	*this = copy;

@@ -7,7 +7,6 @@
 int main()
 {
   std::cout << "\n\033[35m---------- SUBJECT TEST ----------\033[m\n" << std::endl;
-  {
     const Animal* meta = new Animal();
     const Animal* j = new Dog();
     const Animal* i = new Cat();
@@ -22,10 +21,8 @@ int main()
     delete meta;
     delete j;
     delete i;
-  }
 
   std::cout << "\n\033[35m---------- WRONG CAT ----------\033[m\n" << std::endl;
-  {
     const WrongAnimal* metaWrong = new WrongAnimal();
 	  const Animal* jWrong = new Dog();
 	  const WrongAnimal* iWrong = new WrongCat();
@@ -40,10 +37,8 @@ int main()
 	  delete metaWrong;
 	  delete jWrong;
 	  delete iWrong;
-  }
 
   std::cout << "\n\033[35m---------- Copy constructor and Copy assignment operator ----------\033[m\n" << std::endl;
-  {
     std::cout << "\n\033[32mAnimal from Animal class:\033[m" << std::endl;
 
 	  const Animal *animal0 = new Animal(); // animal destructor
@@ -110,7 +105,7 @@ int main()
 
 	  delete cat3;
 	  delete cat5;
-  }
 
+	std::cout << "--------------------------------" << std::endl;
   return 0;
 }
