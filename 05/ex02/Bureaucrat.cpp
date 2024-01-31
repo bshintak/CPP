@@ -93,7 +93,7 @@ void Bureaucrat::executeForm(const Form &form) {
 		std::cout << "<" << form.getName() << "> cannot be executed by <" << this->getName() << "> because the executor does not have a high enough score." << std::endl;
 
 	else {
-		std::cout << "<" << this->getName() << "> executes <" << form.getName() << ">." << std::endl;
+		std::cout << "<" << this->getName() << "> executed <" << form.getName() << ">." << std::endl;
 		form.executeForm();
 	}
 }

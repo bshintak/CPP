@@ -3,8 +3,8 @@ NAME = form
 
 CPP = c++
 CPPFLAGS = -std=c++98 -Wall -Wextra -Werror
-SRCS = main.cpp Bureaucrat.cpp Form.cpp ShrubberyCreationForm.cpp
-INC = Bureaucrat.hpp Form.hpp ShrubberyCreationForm.hpp
+SRCS = main.cpp Bureaucrat.cpp Form.cpp ShrubberyCreationForm.cpp PresidentialPardonForm.cpp RobotomyRequestForm.cpp
+INC = Bureaucrat.hpp Form.hpp ShrubberyCreationForm.hpp PresidentialPardonForm.hpp RobotomyRequestForm.hpp
 
 OBJS = $(SRCS:.cpp=.o)
 
@@ -14,7 +14,7 @@ $(NAME): $(OBJS) $(INC)
 	$(CPP) $(CPPFLAGS) $(OBJS) -o $(NAME)
 
 %.o : %.cpp  $(INC) 
-	$(CPP)  $(CPPFLAGS) -o $@ -c $< 
+	$(CPP)  $(CPPFLAGS) -o $@ -c $<
 
 clean:
 	rm -f $(OBJS)

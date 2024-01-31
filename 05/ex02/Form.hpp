@@ -22,12 +22,12 @@ class Form
 
         Form	&operator=(const Form &copy);
 
-        const std::string	getName(void) const;
-		int					getGradeSign(void) const;
-        int                 getGradeExecute(void) const;
-        bool                getIsSigned(void);
-        void                setSigned(bool num);
-        bool                getSigned() const;
+        virtual const std::string	getName(void) const;
+		virtual int					getGradeSign(void) const;
+        virtual int                 getGradeExecute(void) const;
+        virtual bool                getIsSigned(void);
+        virtual void                setSigned(bool num);
+        virtual bool                getSigned() const;
 
 		void                beSigned(const Bureaucrat &bureaucrat);
 
