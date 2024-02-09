@@ -1,12 +1,10 @@
 #include "PresidentialPardonForm.hpp"
 
-PresidentialPardonForm::PresidentialPardonForm() : Form("presidential pardon", 25, 5){
+PresidentialPardonForm::PresidentialPardonForm() : AForm("presidential pardon", 25, 5){
 	return;
 }
 
-PresidentialPardonForm::PresidentialPardonForm(std::string target) :
-Form("presidential pardon", 25, 5)
-{
+PresidentialPardonForm::PresidentialPardonForm(std::string target) : AForm("presidential pardon", 25, 5) {
 	this->setFormTarget(target);
 }
 
@@ -14,7 +12,7 @@ PresidentialPardonForm::~PresidentialPardonForm() {
 	return;
 }
 
-PresidentialPardonForm::PresidentialPardonForm(const PresidentialPardonForm &src) : Form(src.getName(), src.getGradeSign(), src.getGradeExecute()){
+PresidentialPardonForm::PresidentialPardonForm(const PresidentialPardonForm &src) : AForm(src.getName(), src.getGradeSign(), src.getGradeExecute()){
 	std::cout << "<PresidentialPardonForm> copy constructor is called." << std::endl;
 	*this = src;
 }

@@ -24,9 +24,8 @@ class Form
         const std::string	getName(void) const;
 		int					getGradeSign(void) const;
         int                 getGradeExecute(void) const;
-        bool                getIsSigned(void);
+        bool                getSigned(void) const;
         void                setSigned(bool num);
-        bool                getSigned() const;
 
 		void                beSigned(const Bureaucrat &bureaucrat);
 
@@ -50,6 +49,6 @@ class Form
 
 };
 
-std::ostream	&operator<<(std::ostream &o, const Form &copy);
+std::ostream	&operator<<(std::ostream &os, const Form &copy);
 
 #endif

@@ -21,7 +21,7 @@ Form::Form(const std::string name, int gradeSign, int gradeExecute) : _name(name
     std::cout << "The form" << this->getName() << " has been created with " << this->getGradeSign() << " grade to sign and " << this->getGradeExecute() << " grade to execute." << std::endl;
     
 }
-Form::Form(const Form &copy) : _name(copy._name), _gradeSign(copy._gradeSign), _gradeExecute(copy._gradeExecute) {
+Form::Form(const Form &copy) : _name(copy.getName()), _signed(copy.getSigned()), _gradeSign(copy.getGradeSign()), _gradeExecute(copy.getGradeExecute()) {
     *this = copy;
 }
 
@@ -35,37 +35,24 @@ Form &Form::operator=(const Form &form) {
     return (*this);
 }
 
-std::ostream	&operator<<(std::ostream &o, const Form &form)
-{
-	o << "[" << form.getName() << "]" << std::endl;
-	o << "\t" << "signed : " << form.getGradeSign() << std::endl;
-	o << "\t" << "grade needed to sign : " << form.getGradeSign() << std::endl;
-	o << "\t" << "grade needed to execute : " << form.getGradeExecute() << std::endl;
-	return (o);
-};
-
 const std::string Form::getName(void) const{
-    return _name;
+    return this->_name;
 }
 
 int Form::getGradeSign(void) const{
-    return _gradeSign;
+    return this->_gradeSign;
 }  
 
 int Form::getGradeExecute(void) const{
-    return _gradeExecute;
+    return this->_gradeExecute;
 }
 
-bool Form::getIsSigned(void) {
-    return _signed;
+bool Form::getSigned(void) const {
+	return this->_signed;
 }
 
 void Form::setSigned(bool num) {
 	this->_signed = num;
-}
-
-bool Form::getSigned() const {
-	return this->_signed;
 }
 
 void Form::beSigned(const Bureaucrat &bureaucrat) {
@@ -77,6 +64,20 @@ void Form::beSigned(const Bureaucrat &bureaucrat) {
 		std::cout << e.what() << std::endl;
 		return ;
 	}
-    if (bureaucrat.getGrade() <= this->getGradeSign())
+    if (bureaucrat.getGrade() <= this->getGradeSign()) {
         this->_signed = true;
+        std::cout << "<" << this->getName() << "> is signed by <" << bureaucrat.getName() << ">" << std::endl;
+    }
 }
+
+std::ostream	&operator<<(std::ostream &os, const Form &form) {
+	os << "[" << form.getName() << "]" << std::endl;
+	os << "\t" << "signed : " << form.getGradeSign() << std::endl;
+	os << "\t" << "grade needed to sign : " << form.getGradeSign() << std::endl;
+	os << "\t" << "grade needed to execute : " << form.getGradeExecute() << std::endl;
+    if (form.getSigned())
+		os << "Form <" << form.getName() << "> is signed.";
+	else
+		os << "Form <" << form.getName() << "> is not signed.";
+	return (os);
+};

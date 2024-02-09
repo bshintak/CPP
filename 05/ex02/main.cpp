@@ -1,12 +1,12 @@
 #include "Bureaucrat.hpp"
-#include "Form.hpp"
+#include "AForm.hpp"
 #include "ShrubberyCreationForm.hpp"
 #include "RobotomyRequestForm.hpp"
 #include "PresidentialPardonForm.hpp"
 
 int main() {
   std::cout << std::endl << "--ShrubberyCreationForm--" << std::endl;
-
+	// AForm *form = new AForm();
 	{
 		Bureaucrat highGrade("highGrade", 1);
 		Bureaucrat lowGrade("lowGrade", 150);
