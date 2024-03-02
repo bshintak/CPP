@@ -1,5 +1,4 @@
-#ifndef SCALAR_CONVERTER_HPP
-#define SCALAR_CONVERTER_HPP
+#pragma once
 
 #include <iostream>
 #include <sstream>
@@ -38,5 +37,3 @@ class ScalarConverter {
 
 		void	convert(std::string literal);
 };
-
-#endif

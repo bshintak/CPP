@@ -1,5 +1,4 @@
-#ifndef INTERN_HPP
-#define INTERN_HPP
+#pragma once
 
 # include "ShrubberyCreationForm.hpp"
 # include "RobotomyRequestForm.hpp"
@@ -25,5 +24,3 @@ class 	Intern
 	private:
 		std::string _forms[3];
 };
-
-#endif

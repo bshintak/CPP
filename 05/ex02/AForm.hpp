@@ -1,5 +1,5 @@
-#ifndef AForm_HPP
-# define AForm_HPP
+#pragma once
+
 #include <iostream>
 #include "Bureaucrat.hpp"
 
@@ -67,5 +67,3 @@ class AForm
 };
 
 std::ostream	&operator<<(std::ostream &o, const AForm &copy);
-
-#endif

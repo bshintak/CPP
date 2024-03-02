@@ -1,5 +1,4 @@
-#ifndef SHRUBBERYCREATIONFORM_HPP
-#define SHRUBBERYCREATIONFORM_HPP
+#pragma once
 
 #include <iostream>
 #include <fstream>
@@ -19,5 +18,3 @@ public:
 	virtual void executeForm() const;
 
 };
-
-#endif

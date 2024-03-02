@@ -1,5 +1,5 @@
-#ifndef PRESIDENTIALPARDONFORM_HPP
-#define PRESIDENTIALPARDONFORM_HPP
+#pragma once
+
 #include "AForm.hpp"
 #include <iostream>
 
@@ -18,5 +18,3 @@ public:
 	virtual void executeForm() const;
 
 };
-
-#endif 
