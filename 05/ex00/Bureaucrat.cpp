@@ -5,8 +5,6 @@ Bureaucrat::Bureaucrat() : _name("default"), _grade(150) {}
 Bureaucrat::~Bureaucrat() {}
 
 Bureaucrat::Bureaucrat(std::string name, int grade) : _name(name), _grade(grade) {
-	std::cout << "name: " << name << std::endl;
-	std::cout << "grade: " << grade << std::endl;
 	try {
 		if (grade < 1)
 			throw Bureaucrat::GradeTooHighException();

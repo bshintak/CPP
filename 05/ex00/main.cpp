@@ -19,12 +19,12 @@ int main() {
 	std::cout << "----" << std::endl;
 	limit.gradeOneUp();
 	std::cout << limit << std::endl;
-	limit.gradeOneDown();
+	limit.gradeOneUp();
 	std::cout << limit << std::endl;
 	std::cout << "----" << std::endl;
 	limit2.gradeOneDown();
 	std::cout << limit2 << std::endl;
-	limit2.gradeOneUp();
+	limit2.gradeOneDown();
 	std::cout << limit2 << std::endl;
 
 	// test copy & assignation operator
