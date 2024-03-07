@@ -49,19 +49,19 @@ int main() {
 
     std::cout << "Vector elements: ";
     for (std::vector<int>::iterator it = myVector.begin(); it != myVector.end(); ++it) {
-        std::cout << *it << " ";
+        std::cout << "[" << *it << "]" << " ";
     }
     std::cout << std::endl;
 
     std::cout << "List elements: ";
     for (std::list<int>::iterator it = myList.begin(); it != myList.end(); ++it) {
-        std::cout << *it << " ";
+        std::cout << "[" << *it << "]" << " ";
     }
     std::cout << std::endl;
 
     std::cout << "Set elements: ";
     for (std::set<int>::iterator it = mySet.begin(); it != mySet.end(); ++it) {
-        std::cout << *it << " ";
+        std::cout << "[" << *it << "]" << " ";
     }
     std::cout << std::endl;
 
