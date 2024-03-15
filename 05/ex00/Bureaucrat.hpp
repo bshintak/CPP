@@ -32,7 +32,7 @@ class Bureaucrat
         class GradeTooLowException : public std::exception
         {
             public: 
-                    const char *what() const throw()
+                    const char *what() const throw() //what() é usada para obter uma descrição da exceção e throw garante que a função what() não vai lançar (throw) exceções adicionais
                     {
                         return ("Bureaucrat::exception : Grade is too Low");
                     }

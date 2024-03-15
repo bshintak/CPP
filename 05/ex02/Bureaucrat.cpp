@@ -31,7 +31,7 @@ Bureaucrat&	Bureaucrat::operator=(const Bureaucrat &copy) {
 }
 
 std::ostream& operator<<(std::ostream& os, const Bureaucrat& bureaucrat) {
-		os << "Bureaucrat: " << bureaucrat.getName() << ", Grade: " << bureaucrat.getGrade();
+		os << bureaucrat.getName() << ", bureaucrat grade " << bureaucrat.getGrade();
     return os;
 }
 
@@ -44,6 +44,8 @@ int Bureaucrat::getGrade(void) const {
 }
 
 void Bureaucrat::gradeOneDown(void) {
+	if (_grade <= 150)
+		_grade++;
   try {
 		if (_grade > 150)
 			throw GradeTooLowException();
@@ -52,10 +54,11 @@ void Bureaucrat::gradeOneDown(void) {
 		std::cout << e.what() << std::endl;
 		return;
 	}
-	_grade++;
 }
 
 void Bureaucrat::gradeOneUp(void) {
+	if (_grade >= 1)
+  	_grade--;
   try {
 		if(_grade < 1)
     	throw GradeTooHighException();
@@ -64,17 +67,16 @@ void Bureaucrat::gradeOneUp(void) {
 		std::cout << e.what() << std::endl;
 		return;
 	}
-  _grade--;
 }
 
 void Bureaucrat::signForm(AForm &form) {
 	if (form.getGradeSign() >= this->getGrade())
 	{
 		form.setSigned(true);
-		std::cout << "<" << this->getName() << "> signed <" << form.getName() << ">" << std::endl;
+		std::cout << this->getName() << " signed " << form.getName() << std::endl;
 	}
 	else
-		std::cout << "<" << this->getName() << "> couldn’t sign <" << form.getName() << "> because <the bureaucrat's grade is lower than the form's grade to sign>" << std::endl;
+		std::cout << this->getName() << " couldn’t sign " << form.getName() << " because the bureaucrat's grade is lower than the form's grade to sign" << std::endl;
 }
 
 /*---------- NEW ----------*/
