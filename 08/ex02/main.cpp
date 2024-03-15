@@ -2,6 +2,7 @@
 
 int main()
 {
+  std::cout << "Subject test:" << std::endl;
   MutantStack<int> mstack;
   mstack.push(5);
   mstack.push(17);
@@ -17,11 +18,11 @@ int main()
   MutantStack<int>::iterator ite = mstack.end();
   ++it;
   --it;
-  while (it != ite)
-  {
-  std::cout << *it << std::endl;
-  ++it;
+  while (it != ite) {
+    std::cout << *it << std::endl;
+    ++it;
   }
   std::stack<int> s(mstack);
+
   return 0;
 }
