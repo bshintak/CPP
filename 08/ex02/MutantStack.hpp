@@ -28,7 +28,7 @@ class MutantStack : public std::stack<T> {
       return (this->c.begin());
     };
     const_iterator end() const {
-      return (this->c.begin());
+      return (this->c.end());
     };
 
 };
