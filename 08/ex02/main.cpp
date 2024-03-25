@@ -19,7 +19,7 @@ int main()
   ++it;
   --it;
   while (it != ite) {
-    std::cout << it << std::endl;
+    std::cout << *it << std::endl; // the value pointed to by the iterator it
     ++it;
   }
   std::stack<int> s(mstack);
