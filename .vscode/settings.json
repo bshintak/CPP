@@ -69,6 +69,7 @@
     "sstream": "cpp",
     "list": "cpp",
     "set": "cpp",
-    "map": "cpp"
+    "map": "cpp",
+    "stack": "cpp"
   }
 }
