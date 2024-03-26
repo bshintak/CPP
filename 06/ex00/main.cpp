@@ -1,9 +1,8 @@
 #include "ScalarConverter.hpp"
-#include <cfloat>
 
 int main(int ac, char** av) {
 
-    ScalarConverter conv;
+    ScalarConverter *conv = NULL;
 
     if (ac != 2)
 	{
@@ -11,7 +10,7 @@ int main(int ac, char** av) {
 		std::cout << "TRY: ./converter [arg]" << std::endl;
 		return (-1);
     }
-	conv.convert(av[1]);
+	conv->convert(av[1]);
 
     return 0;
 }

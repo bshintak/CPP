@@ -5,10 +5,6 @@
 #include <limits> //max and min
 #include <cctype> //isdigit()
 #include <iomanip> //setprecision()
-// #include <algorithm>
-// #include <iomanip>
-// #include <cmath>
-// #include <string>
 #include <typeinfo>
 
 #define INT_TYPE 0
@@ -19,21 +15,19 @@
 
 class ScalarConverter {
   private:
+		ScalarConverter();
 		ScalarConverter & operator=(const ScalarConverter &op);
 		ScalarConverter(const ScalarConverter &src);
 
-		void	charConvertion(std::string value);
-		void	intConvertion(std::string value);
-		void	floatConvertion(std::string value);
-		void	doubleConvertion(std::string value);
-		void	pseudoLiteralsConvertion(std::string value);
-		void	exceptionConvertion(std::string value);
-
-		int		check_literal(std::string literal);
 
 	public:
-		ScalarConverter();
 		~ScalarConverter();
-
-		void	convert(std::string literal);
+		static void	convert(std::string literal);
 };
+
+void	charConvertion(std::string value);
+void	intConvertion(std::string value);
+void	floatConvertion(std::string value);
+void	doubleConvertion(std::string value);
+void	pseudoLiteralsConvertion(std::string value);
+void	exceptionConvertion(std::string value);

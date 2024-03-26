@@ -1,24 +1,19 @@
 #include "ScalarConverter.hpp"
 
-ScalarConverter::ScalarConverter() {
-	std::cout << "Default constructor called" << std::endl;
-}
+ScalarConverter::ScalarConverter() {}
 
 ScalarConverter::ScalarConverter(const ScalarConverter &src) {
 	(void)src;
-	std::cout << "Copy constructor called" << std::endl;
 }
 
-ScalarConverter::~ScalarConverter() {
-	std::cout << "Destructor called" << std::endl;
-}
+ScalarConverter::~ScalarConverter() {}
 
 ScalarConverter &ScalarConverter::operator=(const ScalarConverter &op) {
 	(void)op;
 	return (*this);
 }
 
-void	ScalarConverter::charConvertion(std::string literal) {
+void	charConvertion(std::string literal) {
 	std::stringstream s(literal);
 	int literal_char;
 
@@ -37,7 +32,7 @@ void	ScalarConverter::charConvertion(std::string literal) {
 	std::cout << "CHAR: \'" << static_cast<char>(literal_char) << "\'" << std::endl;
 }
 
-void	ScalarConverter::intConvertion(std::string literal) {
+void	intConvertion(std::string literal) {
 	std::stringstream s(literal);
 	double literal_int;
 
@@ -53,7 +48,7 @@ void	ScalarConverter::intConvertion(std::string literal) {
 
 }
 
-void	ScalarConverter::floatConvertion(std::string literal) {
+void	floatConvertion(std::string literal) {
 	std::stringstream s(literal);
 	float literal_float;
 
@@ -61,13 +56,13 @@ void	ScalarConverter::floatConvertion(std::string literal) {
 		s >> literal_float;
 	else
 		literal_float = static_cast<float>(literal[0]);
-	if (literal.find('.') == std::string::npos)
-		std::cout << std::fixed << std::setprecision(1) << "FLOAT: " << literal_float << 'f' << std::endl;
+	if (literal.find('.') == std::string::npos || literal[literal.find('.') + 1] == '0')
+		std::cout << std::fixed << std::setprecision(1) << "FLOAT: \'" << literal_float << "f\'" << std::endl;
 	else
-		std::cout << "FLOAT: " << literal_float << 'f' << std::endl;
+		std::cout << "FLOAT: " << literal_float << "f" << std::endl;
 }
 
-void	ScalarConverter::doubleConvertion(std::string literal) {
+void	doubleConvertion(std::string literal) {
 	std::stringstream s(literal);
 	double literal_double;
 
@@ -75,11 +70,10 @@ void	ScalarConverter::doubleConvertion(std::string literal) {
 		s >> literal_double;
 	else
 		literal_double = static_cast<double>(literal[0]);
-
 	std::cout << "DOUBLE: \'" << static_cast<double>(literal_double) << "\'" << std::endl;
 }
 
-void	ScalarConverter::pseudoLiteralsConvertion(std::string literal) {
+void	pseudoLiteralsConvertion(std::string literal) {
 	if (literal == "-inf" || literal == "+inf" || literal == "nan")
 	{
 		std::cout << "CHAR: impossible" << std::endl;
@@ -92,28 +86,27 @@ void	ScalarConverter::pseudoLiteralsConvertion(std::string literal) {
 		std::cout << "CHAR: impossible" << std::endl;
 		std::cout << "INT: impossible" << std::endl;
 		std::cout << "FLOAT: " << literal << std::endl;
-		// literal.erase(literal.length() - 1);
 		std::cout << "DOUBLE: " << literal << std::endl;
 	}
 	return ;
 }
 
-void	ScalarConverter::exceptionConvertion(std::string literal) {
+void	exceptionConvertion(std::string literal) {
 	std::cout << "CHAR: Non displayable"<< std::endl;
 	std::cout << "INT : \'" << literal << "\'" << std::endl;
-	std::cout << "FLOAT: " << literal << 'f' << std::endl;
-	std::cout << "DOUBLE: \'" << literal << "\'" << std::endl;
+	std::cout << "FLOAT: " << literal << ".0f" << std::endl;
+	std::cout << "DOUBLE: \'" << literal << ".0\'" << std::endl;
 }
 
 void ScalarConverter::convert(std::string literal)
 {
 	if (literal != "\0") {
-		if (literal.find('f') != std::string::npos && literal.find_first_of('f') != literal.length() - 1) {
+		if (literal == "-inf" || literal == "+inf" || literal == "-inff" || literal == "+inff" || literal == "nan" || literal == "nanf")
+			pseudoLiteralsConvertion(literal);
+		else if (literal.find('f') != std::string::npos && literal.find_first_of('f') != literal.length() - 1) {
 			std::cout << "INVALID ARGUMENT" << std::endl;
 			return ;
 		}
-		if (literal == "-inf" || literal == "+inf" || literal == "-inff" || literal == "+inff" || literal == "nan" || literal == "nanf")
-			pseudoLiteralsConvertion(literal);
 		else if (literal.compare("0") >= 0 && literal.compare("9") <= 0 && literal.length() == 1) {
 			exceptionConvertion(literal);
 		}
