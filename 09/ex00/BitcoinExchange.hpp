@@ -9,8 +9,8 @@
 class BitcoinExchange {
   private:
     std::map<std::string, double> bitcoinPrices;
-  public:
     BitcoinExchange();
+  public:
     ~BitcoinExchange();
     BitcoinExchange(const BitcoinExchange & other);
     BitcoinExchange & operator=(const BitcoinExchange & op);

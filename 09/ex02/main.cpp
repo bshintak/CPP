@@ -22,5 +22,6 @@ int main(int ac, char **av) {
   }
   PmergeMe p;
   p.sortList(&av[1], ac - 1);
+  p.sortDeque(&av[1], ac - 1);
   return 0;
 }

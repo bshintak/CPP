@@ -10,9 +10,9 @@ PmergeMe::PmergeMe(const PmergeMe& other) {
 PmergeMe & PmergeMe::operator=(const PmergeMe& op) {
   if (this != &op) {
 		this->list = op.list;
-		this->vector = op.vector;
+		this->deque = op.deque;
 		this->listSortTimeSec = op.listSortTimeSec;
-		this->vectorSortTimeSec = op.vectorSortTimeSec;
+		this->dequeSortTimeSec = op.dequeSortTimeSec;
 	}
 	return *this;
 }
@@ -71,6 +71,68 @@ void PmergeMe::sortListInsertion(std::list<int> &list) {
   while (it != list.end()) {
     std::list<int>::iterator it1 = it;
     while (it1 != list.begin() && *(--it1) > *it) {
+      int temp = *it1;
+      *it1 = *it;
+      *it = temp;
+      --it;  // Volta o iterador
+    }
+    ++it;
+  }
+}
+
+void PmergeMe::sortDeque(char **args, int size) {
+    clock_t start_time = clock(); // Tempo inicial
+    int num;
+
+    std::cout << "Lista antes da ordenação:";
+    for (int i = 0; i < size; ++i) {
+      // list.push_back(std::atoi(args[i]));
+      num = std::atoi(args[i]);
+      deque.push_back(num);
+      std::cout << " " << num;
+    }
+    std::cout << std::endl;
+
+    // Ordenando a lista usando o merge sort
+    deque = mergeSortDeque(deque.begin(), deque.end());
+
+    // Calculando o tempo decorrido
+    dequeSortTimeSec = static_cast<double>(clock() - start_time) / CLOCKS_PER_SEC;
+
+    std::cout << "Lista após a ordenação:";
+    std::list<int>::iterator it;
+    for (it = list.begin(); it != list.end(); ++it) {
+      std::cout << " " << *it;
+    }
+    std::cout << std::endl;
+
+    std::cout << "Tempo de ordenação: " << dequeSortTimeSec << " segundos" << std::endl;
+}
+
+std::deque<int> PmergeMe::mergeSortDeque(std::deque<int>::iterator begin, std::deque<int>::iterator end) {
+    std::deque<int> res;
+    if (std::distance(begin, end) <= 3) {
+        res.assign(begin, end); // Copia os elementos para res
+        sortDequeInsertion(res); // Chama a função para ordenar
+        return res;
+    }
+    std::deque<int>::iterator midIt = begin;
+    std::advance(midIt, std::distance(begin, end) / 2);
+    std::deque<int> deque1 = mergeSortDeque(begin, midIt);
+    std::deque<int> deque2 = mergeSortDeque(midIt, end);
+    std::merge(deque1.begin(), deque1.end(), deque2.begin(), deque2.end(), std::back_inserter(res));
+    return res;
+}
+
+void PmergeMe::sortDequeInsertion(std::deque<int> &deque) {
+  if (deque.size() <= 1)
+    return;
+
+  std::deque<int>::iterator it = ++deque.begin();
+
+  while (it != deque.end()) {
+    std::deque<int>::iterator it1 = it;
+    while (it1 != deque.begin() && *(--it1) > *it) {
       int temp = *it1;
       *it1 = *it;
       *it = temp;
