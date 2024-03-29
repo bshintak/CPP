@@ -5,76 +5,58 @@
 #include <cstdlib>  // Para srand e rand
 #include <ctime>    // Para time
 
-// essa classe  incorpora e gerencia um array alocado dinamicamente. Isso significa que a
-// classe é responsável pela alocação, desalocação e manipulação do array, proporcionando
-// uma camada de abstração que facilita o uso e evita vazamentos de memória ou erros
-// relacionados à gestão de memória
-
 template <typename T>
 class Array {
 private:
-    T* elements; // Ponteiro para os elementos do array
-    size_t arraySize; // Número de elementos no array
+    T*              arr;
+    unsigned int    arraySize;
 
 public:
-    // Construtor padrão
-    Array() : elements(NULL), arraySize(0) {}
+    Array() : arr(new T[0]), arraySize(0) {}
 
-    // Construtor com tamanho especificado
-    Array(size_t n) : arraySize(n) {
-        if (n > 0) {
-            elements = new T[n](); // Usa new[] para alocar memória e inicializa os elementos
-        } else {
-            elements = NULL;
-        }
+    Array(unsigned int n) : arr(new T[n]), arraySize(n) {}
+
+    Array(const Array& other) {
+        arraySize = other.arraySize;
+        arr = new T[arraySize];
+        for(unsigned int i = 0; i < arraySize; i++)
+			arr[i] = other.arr[i];
     }
 
-    // Construtor de cópia
-     Array(const Array& other) : elements(NULL), arraySize(0) {
-        if (other.arraySize > 0) {
-            elements = new T[other.arraySize](); // Usa new[] para alocar memória e inicializa os elementos
-            for (size_t i = 0; i < other.arraySize; ++i) {
-                elements[i] = other.elements[i];
-            }
-            arraySize = other.arraySize;
-        }
-    }
-
-    // Operador de atribuição
     Array& operator=(const Array& other) {
-        if (this != &other) { // Evita autoatribuição
-            delete[] elements; // Libera a memória do array atual
-
-            if (other.arraySize > 0) {
-                elements = new T[other.arraySize](); // Usa new[] para alocar memória e inicializa os elementos
-                for (size_t i = 0; i < other.arraySize; ++i) {
-                    elements[i] = other.elements[i];
-                }
-                arraySize = other.arraySize;
-            } else {
-                elements = NULL;
-                arraySize = 0;
-            }
-        }
-        return *this;
+        if (this != &other)
+		{
+			delete[] arr;
+			arraySize = other.arraySize;
+			arr = new T[arraySize];
+			for(unsigned int i = 0; i < arraySize; i++)
+				arr[i] = other.arr[i];
+		}
+		return *this;
     }
 
-    // Destrutor
     ~Array() {
-        delete[] elements; // Libera a memória alocada pelo array
+        delete[] arr;
     }
 
     // Acesso aos elementos por meio do operador []
-    T& operator[](size_t index) {
+    T& operator[](unsigned int index) {
         if (index < arraySize) {
-            return elements[index];
+            return arr[index];
         } else {
-            throw std::out_of_range("Index out of bounds");
+            throw std::exception();
         }
     }
 
-    // Função membro size()
-    size_t size() const {
+    const T& operator[](unsigned int index) const {
+        if (index < arraySize) {
+            return arr[index];
+        } else {
+            throw std::exception();
+        }
+    }
+
+    unsigned int size() const {
         return arraySize;
     }
 
