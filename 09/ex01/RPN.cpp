@@ -4,28 +4,24 @@ bool isOperator(char c) {
     return (c == '+' || c == '-' || c == '*' || c == '/');
 }
 
-int operate(int a, int b, char op) {
-    switch (op) {
-        case '+':
-            return a + b;
-        case '-':
-            return a - b;
-        case '*':
-            return a * b;
-        case '/':
-            if (b != 0)
-                return a / b;
-            else {
-                std::cout << "Error" << std::endl;
-                return -1;
-            }
-        default:
-            return -1;
+int	checkLine(std::string line) {
+    int signal = 1, num = 0;
+	for (size_t i = 0; i < line.length(); i++)
+	{
+		if (i % 2 == 0 && (line.find_first_not_of(" 1234567890+-*/") != std::string::npos))
+			return 1;
+		if (i % 2 != 0 && line[i] != ' ')
+			return 1;
+        if (line[i] == '+' || line[i] == '-' || line[i] == '*' || line[i] == '/')
+            signal++;
+        if (isdigit(line[i]))
+            num++;
     }
-    return 0;
+    if (num != signal)
+        return 1;
+	return 0;
 }
 
-// Função que exibe o resultado da expressão em notação polonesa reversa
 void displayResult(const std::string expression) {
     std::stack<int> nbrStack;
 
@@ -37,21 +33,40 @@ void displayResult(const std::string expression) {
         }
         if (expression[i] == '+' || expression[i] == '-' || expression[i] == '*' || expression[i] == '/') {
             if (nbrStack.size() < 2) {
-                std::cout << "Error" << std::endl;
-                exit(1);
+                std::cerr << "Error: signal" << std::endl;
+                return ;
             }
             int nbr2 = nbrStack.top();
             nbrStack.pop();
             int nbr1 = nbrStack.top();
             nbrStack.pop();
-            int result = operate(nbr1, nbr2, expression[i]);
-            if (result == -1) {
-              std::cerr << "Error" << std::endl;
-              return;
+            int result;
+            switch (expression[i]) {
+                case '+':
+                    result = nbr1 + nbr2;
+                    break ;
+                case '-':
+                    result = nbr1 - nbr2;
+                    break ;
+                case '*':
+                    result = nbr1 * nbr2;
+                    break ;
+                case '/':
+                    if (nbr2 != 0) {
+                        result =  nbr1 / nbr2;
+                        break ;
+                    }
+                    else {
+                        std::cout << "Error" << std::endl;
+                        return ;
+                    }
+                    break ;
+                default:
+                    return ;
             }
             nbrStack.push(result);
         }
-        i++; // Incrementa o índice manualmente
+        i++;
     }
     std::cout << nbrStack.top() << std::endl;
 }

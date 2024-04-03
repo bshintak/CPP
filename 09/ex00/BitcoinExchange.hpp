@@ -5,6 +5,7 @@
 #include <string>
 #include <fstream>
 #include <cstdlib>
+#include <utility> //std::pair
 
 class BitcoinExchange {
   private:

@@ -5,7 +5,7 @@ int main (int ac, char **av) {
     std::cerr << "Error: could not open file."  << std::endl;
     return -1;
   }
-  BitcoinExchange btc("data.csv");
+  BitcoinExchange btc("data_null.csv");
   btc.exchanger(av[1]);
   return 0;
 }

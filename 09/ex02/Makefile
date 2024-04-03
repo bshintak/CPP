@@ -1,8 +1,8 @@
 # .SILENT :
 NAME = PmergeMe
 
-CPP = c++
-CPPFLAGS = -std=c++98 -Wall -Wextra -Werror
+CXX = c++
+CXXFLAGS = -std=c++98 -Wall -Wextra -Werror
 SRCS = main.cpp PmergeMe.cpp
 INC = PmergeMe.hpp
 
@@ -11,10 +11,7 @@ OBJS = $(SRCS:.cpp=.o)
 all : $(NAME)
 
 $(NAME): $(OBJS) $(INC)
-	$(CPP) $(CPPFLAGS) $(OBJS) -o $(NAME)
-
-%.o : %.cpp  $(INC) 
-	$(CPP)  $(CPPFLAGS) -o $@ -c $< 
+	$(CXX) $(CXXFLAGS) $(OBJS) -o $(NAME)
 
 clean:
 	rm -f $(OBJS)

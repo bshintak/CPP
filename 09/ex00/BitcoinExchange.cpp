@@ -22,14 +22,14 @@ BitcoinExchange::BitcoinExchange(const std::string file) {
     
   if (data.is_open()) {
       while (std::getline(data, line)) {
-          // std::cout << "\033[1;35mReading line:\033[0m " << line << std::endl;
+          std::cout << "\033[1;35mReading line:\033[0m " << line << std::endl;
           size_t pos = line.find(',');
           if (pos != std::string::npos) { // checks if the comma was found
-              // std::cout << "\033[1;34mComma found at position:\033[0m " << pos << std::endl;
+              std::cout << "\033[1;34mComma found at position:\033[0m " << pos << std::endl;
               date = line.substr(0, pos);
-              // std::cout << "\033[1;33mDate:\033[0m " << date << std::endl;
+              std::cout << "\033[1;33mDate:\033[0m " << date << std::endl;
               value = std::atof(line.substr(pos + 1).c_str());
-              // std::cout << "\033[1;33mValue:\033[0m " << value << std::endl;
+              std::cout << "\033[1;33mValue:\033[0m " << value << std::endl;
               this->bitcoinPrices.insert(std::pair <std::string, double>(date, value));
           }
       }
@@ -116,10 +116,16 @@ int BitcoinExchange::isValid(std::string date) {
 
 float BitcoinExchange::getBitcoinPrices(std::string date) {
     std::map<std::string, double>::iterator it = bitcoinPrices.lower_bound(date); // lower_bound - find the first element in the map that is greater than or equal to the provided date
-    if (it == bitcoinPrices.begin()) // if the date is before the first element, return 0
-      return 0;
-    if (it == bitcoinPrices.end()) // If the date is after the last element, move back to the last element
-      --it;
+    if (it != bitcoinPrices.end() && it->first == date) {
+        return it->second; // A data existe, retorna o valor associado diretamente
+    }
+    // Se a data fornecida não estiver no mapa, procurar a data mais próxima (menor)
+    if (it == bitcoinPrices.begin()) {
+        return 0; // Se a data fornecida for anterior à primeira data no mapa, retorne 0
+    }
+    // Retrocede para a data mais próxima (menor)
+    --it;
+
     return it->second;
 }
 
